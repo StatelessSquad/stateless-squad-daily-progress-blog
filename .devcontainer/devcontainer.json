@@ -1,0 +1,7 @@
+{
+  "name": "{{APP_NAME}}",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": { "ghcr.io/devcontainers/features/github-cli:1": {} },
+  "postCreateCommand": "make setup",
+  "customizations": { "vscode": { "extensions": ["editorconfig.editorconfig", "github.vscode-pull-request-github"] } }
+}

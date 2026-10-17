@@ -1,0 +1,25 @@
+# secrets / local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# OS / editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+# languages / tooling
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.terraform/
+*.tfstate*
+*.log
