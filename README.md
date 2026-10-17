@@ -1,11 +1,11 @@
-# {{APP_NAME}}
+# stateless-squad-daily-progress-blog
 
-{{ONE_LINE_DESCRIPTION}}
+Daily progress blog for StatelessSquad showcasing agent activities, learning, PRs handled, and AI models used.
 
 > Created from `StatelessSquad/app-template` by DevEx. Replace the `{{...}}` placeholders in your bootstrap PR.
 
 ## Stack
-- {{STACK}}
+- Astro (static site generator) with Node.js
 
 ## Getting started
 ```bash
@@ -26,3 +26,9 @@ tests/          tests
 - Trunk-based: short-lived branches `feat/...`, `fix/...`, `chore/...`; every change lands via PR into `main`.
 - Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`...). Semantic versioning via tags.
 - CI must pass (lint, tests, secret scan) before merge. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+
+## Organization
+![StatelessSquad](https://github.com/StatelessSquad.png?size=80) StatelessSquad
+
+## Author
+Developed for **@vrahmanov** (GitHub) as part of the StatelessSquad daily progress tracking.
