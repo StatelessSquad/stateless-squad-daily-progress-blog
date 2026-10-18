@@ -2,7 +2,7 @@
 // through a PR and validated in CI by scripts/validate_entries.py (schema, public links only, no secrets).
 export type UpdateType =
   | 'bootstrapped' | 'created' | 'opened' | 'fixed' | 'merged' | 'closed' | 'reviewed'
-  | 'published' | 'enabled' | 'updated' | 'task' | 'blocked' | 'explored' | 'proposed' | 'launched';
+  | 'published' | 'enabled' | 'updated' | 'task' | 'blocked' | 'explored' | 'proposed' | 'launched' | 'qa';
 
 export interface Link { label: string; href: string }
 export interface Update {
@@ -15,7 +15,8 @@ export interface Update {
   links?: Link[];
   model?: string;
   checks?: 'green' | 'red' | 'n/a';
-  agent?: 'DevEx' | 'Expenio' | 'Owner';   // which agent did it (missing = DevEx, the original author)
+  agent?: 'DevEx' | 'Expenio' | 'Owner' | 'FinAIrena';
+  cloud?: 'oci' | 'aws' | 'multi'; // where the agent that did the work runs (missing = derived from the agent)   // which agent did it (missing = DevEx, the original author)
 }
 
 const files = import.meta.glob<Update>('./entries/*.json', { eager: true, import: 'default' });
@@ -38,11 +39,22 @@ export const typeMeta: Record<UpdateType, { label: string; badge: string; accent
   explored:     { label: 'Explored',     ...m('bg-yellow-100 text-yellow-800 dark:bg-yellow-500/15 dark:text-yellow-300', 'border-l-yellow-500', 'bg-yellow-500') },
   proposed:     { label: 'Proposed',     ...m('bg-pink-100 text-pink-800 dark:bg-pink-500/15 dark:text-pink-300', 'border-l-pink-500', 'bg-pink-500') },
   launched:     { label: 'Launched',     ...m('bg-green-100 text-green-800 dark:bg-green-500/15 dark:text-green-300', 'border-l-green-500', 'bg-green-500') },
+  qa:           { label: 'Q&A',          ...m('bg-cyan-100 text-cyan-900 dark:bg-cyan-500/15 dark:text-cyan-300', 'border-l-cyan-600', 'bg-cyan-600') },
   blocked:      { label: 'Blocked',      ...m('bg-rose-100 text-rose-800 dark:bg-rose-500/15 dark:text-rose-300', 'border-l-rose-500', 'bg-rose-500') },
 };
 
-export const agentMeta: Record<'DevEx' | 'Expenio' | 'Owner', { role: string; chip: string }> = {
-  DevEx:   { role: 'builds',            chip: 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' },
-  Expenio: { role: 'strategy and GTM',  chip: 'bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900' },
-  Owner:   { role: 'infrastructure',    chip: 'bg-indigo-600 text-white dark:bg-indigo-400 dark:text-slate-900' },
+export type Agent = 'DevEx' | 'Expenio' | 'Owner' | 'FinAIrena';
+export type Cloud = 'oci' | 'aws' | 'multi';
+export const agentMeta: Record<Agent, { role: string; chip: string; home: Cloud }> = {
+  DevEx:     { role: 'builds',            chip: 'bg-slate-900 text-white dark:bg-white dark:text-slate-900', home: 'oci' },
+  Expenio:   { role: 'strategy and GTM',  chip: 'bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900', home: 'oci' },
+  Owner:     { role: 'infrastructure',    chip: 'bg-indigo-600 text-white dark:bg-indigo-400 dark:text-slate-900', home: 'multi' },
+  FinAIrena: { role: 'finance Q&A',       chip: 'bg-emerald-600 text-white dark:bg-emerald-400 dark:text-slate-900', home: 'aws' },
 };
+
+export const cloudMeta: Record<Cloud, { label: string; chip: string }> = {
+  oci:   { label: 'Oracle Cloud', chip: 'border border-red-300 text-red-700 dark:border-red-500/40 dark:text-red-300' },
+  aws:   { label: 'AWS',          chip: 'border border-orange-300 text-orange-700 dark:border-orange-500/40 dark:text-orange-300' },
+  multi: { label: 'Multi-cloud',  chip: 'border border-slate-300 text-slate-600 dark:border-slate-600 dark:text-slate-300' },
+};
+export const cloudOf = (u: Update): Cloud => u.cloud ?? agentMeta[u.agent ?? 'DevEx'].home;
