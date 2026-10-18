@@ -5,6 +5,8 @@ on:
   pull_request:
 permissions:
   contents: read
+  pages: write      # to deploy to Pages
+  id-token: write   # to verify the deployment
 jobs:
   secrets-scan:
     runs-on: ubuntu-latest
@@ -15,6 +17,7 @@ jobs:
       - name: gitleaks (full history)
         run: docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest git /repo --redact --no-banner --exit-code 1
   lint-and-test:
+    needs: secrets-scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,3 +27,10 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
