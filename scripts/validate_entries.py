@@ -34,6 +34,7 @@ FORBIDDEN = [
     (r"(/home/|~/|\.hermes\b|\.env\b|hermesto|oraclecloud|objectstorage|ssh-(rsa|ed25519))", "internal path, host or config repo"),
     (r"(api[_ -]?key|password|passwd|secret|token|private[_ -]?key)\s*[:=]", "credential assignment"),
     (r"\b(telegram|chat)[_ ]?(id|user)\b\s*[:=]?\s*\d{5,}", "Telegram id"),
+    (r"[$€£]\s?\d|\b\d+([.,]\d+)?\s?(dollars?|usd|eur|euros?|nis|ils|shekels?)\b|\bper (seat|user|month|year)\b|\bpric(e|es|ing)\b|\bmrr\b|\barr\b", "pricing or revenue detail (strategy stays private)"),
 ]
 FORBIDDEN = [(re.compile(p, re.I), why) for p, why in FORBIDDEN]
 
