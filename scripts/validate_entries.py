@@ -13,7 +13,7 @@ import glob, json, os, re, sys, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TYPES = {"created", "opened", "fixed", "merged", "closed", "reviewed", "published", "enabled", "updated",
          "task", "blocked", "bootstrapped", "explored", "proposed", "launched"}
-AGENTS = {"DevEx", "Expenio"}
+AGENTS = {"DevEx", "Expenio", "Owner"}
 FIELDS = {"date": str, "time": str, "type": str, "title": str, "summary": str, "repo": (str, type(None)),
           "links": list, "model": str, "checks": str, "agent": str}
 REQUIRED = {"date", "time", "type", "title", "summary"}

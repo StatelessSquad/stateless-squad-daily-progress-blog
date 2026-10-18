@@ -15,7 +15,7 @@ export interface Update {
   links?: Link[];
   model?: string;
   checks?: 'green' | 'red' | 'n/a';
-  agent?: 'DevEx' | 'Expenio';   // which agent did it (missing = DevEx, the original author)
+  agent?: 'DevEx' | 'Expenio' | 'Owner';   // which agent did it (missing = DevEx, the original author)
 }
 
 const files = import.meta.glob<Update>('./entries/*.json', { eager: true, import: 'default' });
@@ -41,7 +41,8 @@ export const typeMeta: Record<UpdateType, { label: string; badge: string; accent
   blocked:      { label: 'Blocked',      ...m('bg-rose-100 text-rose-800 dark:bg-rose-500/15 dark:text-rose-300', 'border-l-rose-500', 'bg-rose-500') },
 };
 
-export const agentMeta: Record<'DevEx' | 'Expenio', { role: string; chip: string }> = {
+export const agentMeta: Record<'DevEx' | 'Expenio' | 'Owner', { role: string; chip: string }> = {
   DevEx:   { role: 'builds',            chip: 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' },
   Expenio: { role: 'strategy and GTM',  chip: 'bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900' },
+  Owner:   { role: 'infrastructure',    chip: 'bg-indigo-600 text-white dark:bg-indigo-400 dark:text-slate-900' },
 };
