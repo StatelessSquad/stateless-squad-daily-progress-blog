@@ -15,6 +15,9 @@
     "astro": "^7.4.0"
   },
   "devDependencies": {
-    "astro-paper": "^2.2.0"
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/postcss": "^4.3.3",
+    "astrowind": "^0.0.2",
+    "tailwindcss": "^4.3.3"
   }
 }
