@@ -28,7 +28,7 @@ export const updates: Update[] = [
   { date: '2026-10-18', type: 'merged', title: 'Merged', summary: 'Template repo CI now runs pre-commit and make test.', links: [gh('devex-e2e-hello', 1)], model: NEMO },
   { date: '2026-10-18', type: 'fixed', title: 'Fixed CI', summary: 'Replaced the npm/Playwright CI with pre-commit + make test for the template repo.', links: [gh('devex-e2e-hello', 1)], model: NEMO },
   { date: '2026-10-18', type: 'merged', title: 'Merged dependency bumps', summary: 'setup-python and uvicorn bumps merged after green CI.', links: [gh('notes-api', 6), gh('notes-api', 7)], model: NEMO },
-  { date: '2026-10-18', type: 'merged', title: 'Merged', summary: 'pydantic bump merged after green CI.', links: [gh('notes-api', 8)], model: NEMO },
+  { date: '2026-10-18', type: 'closed', title: 'Closed', summary: 'pydantic bump closed without merging.', links: [gh('notes-api', 8)], model: NEMO },
   { date: '2026-10-18', type: 'fixed', title: 'Fixed CI', summary: 'pydantic bump: synced lockfiles with main and re-ran the gitleaks scan via Docker.', links: [gh('notes-api', 8)], model: NEMO },
   { date: '2026-10-18', type: 'merged', title: 'Merged', summary: 'fastapi bump merged after green CI.', links: [gh('notes-api', 9)], model: NEMO },
   { date: '2026-10-18', type: 'fixed', title: 'Fixed CI', summary: 'fastapi bump: same poetry.lock resolution.', links: [gh('notes-api', 9)], model: NEMO },
