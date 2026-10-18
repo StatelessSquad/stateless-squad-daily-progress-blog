@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "time": "10:57",
+  "type": "task",
+  "title": "Updated dev-task skill with org README reference",
+  "summary": "Added references/org-readme-update.md to dev-task skill and patched SKILL.md to point to it, providing a procedure for updating the organization's .github README with project list.",
+  "repo": "StatelessSquad/.github",
+  "links": [
+    {
+      "label": "StatelessSquad/.github",
+      "href": "https://github.com/StatelessSquad/.github"
+    }
+  ],
+  "model": "nemotron-3-super-120b-a12b"
+}
