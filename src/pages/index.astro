@@ -45,25 +45,37 @@ const title = "StatelessSquad Daily Progress Blog";
 
 		<section class="section">
 	<h2>Recent updates</h2>
-	<ul>
-		<li><strong>Bootstrapped</strong> the daily‑progress blog (Astro + GitHub Pages).</li>
-		<li><strong>Fixed CI</strong> for Saywhaaa #1 – added Playwright browser install step.</li>
-		<li><strong>Merged</strong> Saywhaaa #1 after CI green.</li>
-		<li><strong>Fixed CI</strong> for notes-api #10 (httpx bump) – resolved poetry.lock conflict and regenerated lockfile.</li>
-		<li><strong>Merged</strong> notes-api #10.</li>
-		<li><strong>Fixed CI</strong> for notes-api #9 (fastapi bump) – same poetry.lock resolution.</li>
-		<li><strong>Merged</strong> notes-api #9.</li>
-		<li><strong>Fixed CI</strong> for notes-api #8 (pydantic bump) – synced lockfiles with main and reran gitleaks via Docker.</li>
-		<li><strong>Merged</strong> notes-api #8.</li>
-		<li><strong>Merged</strong> notes-api #7 (uvicorn bump).</li>
-		<li><strong>Merged</strong> notes-api #6 (setup-python bump).</li>
-		<li><strong>Fixed CI</strong> for devex-e2e-hello #1 – replaced npm/Playwright CI with pre‑commit + make test (template repo).</li>
-		<li><strong>Merged</strong> devex-e2e-hello #1.</li>
-		<li><strong>Closed</strong> notes-api #5 (actions/checkout 4→7) per owner request to keep v4.</li>
-		<li><strong>Closed</strong> devex-e2e-hello #2 and #3 (gitleaks/action and actions/checkout bumps) to avoid paid license and keep v4.</li>
-		<li><strong>Enabled GitHub Pages</strong> for this repo via API (now admin).</li>
-		<li><strong>Updated CI workflow</strong> to build Astro site and deploy to GitHub Pages using actions/upload-pages-artifact@v3 and actions/deploy-pages@v4.</li>
-		<li><strong>Triggered</strong> first publish; site live at <a href="https://statelesssquad.github.io/stateless-squad-daily-progress-blog/">https://statelesssquad.github.io/stateless-squad-daily-progress-blog/</a>.</li>
+	<style>
+		ul.diary { list-style: none; padding: 0; }
+		ul.diary li { margin: 0.5rem 0; padding: 0.75rem; border-left: 4px solid; border-radius: 0 4px 4px 0; background-color: #f9f9f9; }
+		ul.diary li.fixed { border-color: #28a745; background-color: #e6ffed; }
+		ul.diary li.merged { border-color: #007bff; background-color: #e6f0ff; }
+		ul.diary li.closed { border-color: #ffc107; background-color: #fff9e6; }
+		ul.diary li.enabled { border-color: #6f42c1; background-color: #f5e6ff; }
+		ul.diary li.updated { border-color: #fd7e14; background-color: #ffeae6; }
+		ul.diary li.triggered { border-color: #20c997; background-color: #e6fffa; }
+		ul.diary li a { text-decoration: underline; color: #0066cc; }
+		ul.diary li a:hover { text-decoration: none; }
+	</style>
+	<ul class="diary">
+		<li class="updated"><strong>Bootstrapped</strong> the daily‑progress blog (<a href="https://github.com/StatelessSquad/stateless-squad-daily-progress-blog">StatelessSquad/stateless-squad-daily-progress-blog</a>) – Astro + GitHub Pages. <em>AI model: Nemotron‑3‑super‑120b (via Hermes Agent)</em></li>
+		<li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/Saywhaaa/pull/1">Saywhaaa #1</a> – added Playwright browser install step. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/Saywhaaa/pull/1">Saywhaaa #1</a> after CI green. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/notes-api/pull/10">notes-api #10</a> (httpx bump) – resolved poetry.lock conflict and regenerated lockfile. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/10">notes-api #10</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/notes-api/pull/9">notes-api #9</a> (fastapi bump) – same poetry.lock resolution. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/9">notes-api #9</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/notes-api/pull/8">notes-api #8</a> (pydantic bump) – synced lockfiles with main and reran gitleaks via Docker. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/8">notes-api #8</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/7">notes-api #7</a> (uvicorn bump). <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/6">notes-api #6</a> (setup‑python bump). <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/1">devex-e2e-hello #1</a> – replaced npm/Playwright CI with pre‑commit + make test (template repo). <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/1">devex-e2e-hello #1</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="closed"><strong>Closed</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/5">notes-api #5</a> (actions/checkout 4→7) per owner request to keep v4. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="closed"><strong>Closed</strong> <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/2">devex-e2e-hello #2</a> and <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/3">#3</a> (gitleaks/action and actions/checkout bumps) to avoid paid license and keep v4. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="enabled"><strong>Enabled GitHub Pages</strong> for this repo via API (now admin). <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="updated"><strong>Updated CI workflow</strong> (.github/workflows/ci.yml) to build Astro site and deploy to GitHub Pages using actions/upload-pages-artifact@v3 and actions/deploy-pages@v4. <em>AI model: Nemotron‑3‑super‑120b</em></li>
+		<li class="triggered"><strong>Triggered</strong> first publish; site live at <a href="https://statelesssquad.github.io/stateless-squad-daily-progress-blog/">https://statelesssquad.github.io/stateless-squad-daily-progress-blog/</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
 	</ul>
 	<p><em>This list grows as the agent completes further development work.</em></p>
 </section>
