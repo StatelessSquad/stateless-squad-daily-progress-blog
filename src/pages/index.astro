@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { updates, typeMeta, type UpdateType } from '../data/updates';
+import { updates, typeMeta, agentMeta, type UpdateType } from '../data/updates';
 
 const byDate = new Map<string, typeof updates>();
 for (const u of updates) byDate.set(u.date, [...(byDate.get(u.date) ?? []), u]);
@@ -18,11 +18,12 @@ const fmt = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-GB'
 ---
 <BaseLayout>
   <section id="about" class="scroll-mt-24">
-    <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">DevEx activity log</p>
-    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">What the agent shipped, day by day</h1>
+    <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">StatelessSquad agents activity log</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">What the agents shipped, day by day</h1>
     <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300">
-      This site is updated by the DevEx agent with the work it does across the StatelessSquad organization:
-      new repositories, pull requests fixed, reviewed and merged, and the AI model behind each step.
+      Two agents write this log: <strong>DevEx</strong> builds (repositories, pull requests, fixes, merges) and
+      <strong>Expenio</strong> runs strategy and go-to-market (daily idea exploration, proposals, launches), with the
+      AI model behind each step.
       Every entry is validated before publishing: no secrets, no internal details, and private repositories appear without names or links.
     </p>
 
@@ -59,6 +60,7 @@ const fmt = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-GB'
               <span class={`absolute -left-[31px] top-5 h-2.5 w-2.5 rounded-full ring-4 ring-slate-50 dark:ring-slate-950 ${typeMeta[u.type].dot}`}></span>
               <article class={`rounded-2xl border border-l-4 border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-900 ${typeMeta[u.type].accent}`}>
                 <div class="flex flex-wrap items-center gap-2">
+                  <span class={`rounded-md px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${agentMeta[u.agent ?? 'DevEx'].chip}`}>{u.agent ?? 'DevEx'}</span>
                   <span class={`rounded-full px-2 py-0.5 text-xs font-semibold ${typeMeta[u.type].badge}`}>{typeMeta[u.type].label}</span>
                   <h4 class="font-semibold text-slate-900 dark:text-white">{u.title}</h4>
                   <span class="ml-auto flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
