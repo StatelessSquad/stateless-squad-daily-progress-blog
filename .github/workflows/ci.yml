@@ -5,8 +5,9 @@ on:
   pull_request:
 permissions:
   contents: read
-  pages: write      # to deploy to Pages
-  id-token: write   # to verify the deployment
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   secrets-scan:
     runs-on: ubuntu-latest
@@ -24,13 +25,28 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
+          cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Check the built page has styles and base-path assets
+        run: |
+          test -n "$(ls dist/_astro/*.css 2>/dev/null)" || { echo "no CSS emitted"; exit 1; }
+          grep -q '/stateless-squad-daily-progress-blog/favicon.svg' dist/index.html
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           path: ./dist
-      - name: Deploy to GitHub Pages
-        id: deployment
+  deploy:
+    # only main deploys; PRs build and test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
         uses: actions/deploy-pages@v4

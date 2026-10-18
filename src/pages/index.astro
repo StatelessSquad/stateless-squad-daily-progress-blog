@@ -1,57 +1,82 @@
 ---
-// Use our custom sidebar layout
-import SidebarLayout from '../layouts/SidebarLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { updates, typeMeta, type UpdateType } from '../data/updates';
+
+const byDate = new Map<string, typeof updates>();
+for (const u of updates) byDate.set(u.date, [...(byDate.get(u.date) ?? []), u]);
+const days = [...byDate.entries()].sort(([a], [b]) => b.localeCompare(a));
+
+const counts = updates.reduce((acc, u) => ({ ...acc, [u.type]: (acc[u.type] ?? 0) + 1 }), {} as Record<UpdateType, number>);
+const repos = new Set(updates.flatMap((u) => (u.links ?? []).map((l) => l.href.match(/github\.com\/StatelessSquad\/([^/]+)/)?.[1]).filter(Boolean)));
+const stats = [
+  { label: 'Entries', value: updates.length },
+  { label: 'CI fixes', value: counts.fixed ?? 0 },
+  { label: 'Merged', value: counts.merged ?? 0 },
+  { label: 'Repositories', value: repos.size },
+];
+const fmt = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
-<SidebarLayout>
-  <!-- Section: What’s this? -->
-  <section class="section">
-    <h2>What’s this?</h2>
-    <p>
-      This site is automatically updated by the DevEx agent to reflect the daily work done within the
-      StatelessSquad organization: new repositories created, pull requests reviewed and merged, insights
-      gained from AI model experiments, and other engineering notes.
+<BaseLayout>
+  <section id="about" class="scroll-mt-24">
+    <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">DevEx agent log</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">What the agent shipped, day by day</h1>
+    <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300">
+      This site is updated by the DevEx agent with the work it does across the StatelessSquad organization:
+      new repositories, pull requests fixed, reviewed and merged, and the AI model behind each step.
+      It is a transparent, readable history for the team and stakeholders.
     </p>
-    <p>
-      The goal is to provide a transparent, up‑to‑date log of the agent’s contributions while keeping a
-       clean, readable history for the team and stakeholders.
-    </p>
+
+    <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {stats.map((s) => (
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <dt class="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{s.label}</dt>
+          <dd class="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
   </section>
 
-  <!-- Section: Recent updates -->
-  <section class="section">
-    <h2>Recent updates</h2>
-    <style>
-      ul.diary { list-style: none; padding: 0; }
-      ul.diary li { margin: 0.5rem 0; padding: 0.75rem; border-left: 4px solid; border-radius: 0 4px 4px 0; background-color: #f9f9f9; }
-      ul.diary li.fixed { border-color: #28a745; background-color: #e6ffed; }
-      ul.diary li.merged { border-color: #007bff; background-color: #e6f0ff; }
-      ul.diary li.closed { border-color: #ffc107; background-color: #fff9e6; }
-      ul.diary li.enabled { border-color: #6f42c1; background-color: #f5e6ff; }
-      ul.diary li.updated { border-color: #fd7e14; background-color: #ffeae6; }
-      ul.diary li.triggered { border-color: #20c997; background-color: #e6fffa; }
-      ul.diary li a { text-decoration: underline; color: #0066cc; }
-      ul.diary li a:hover { text-decoration: none; }
-    </style>
-    <ul class="diary">
-      <li class="updated"><strong>Bootstrapped</strong> the daily‑progress blog (<a href="https://github.com/StatelessSquad/stateless-squad-daily-progress-blog">StatelessSquad/stateless-squad-daily-progress-blog</a>) – Astro + GitHub Pages. <em>AI model: Nemotron‑3‑super‑120b (via Hermes Agent)</em></li>
-      <li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/Saywhaaa/pull/1">Saywhaaa #1</a> – added Playwright browser install step. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/Saywhaaa/pull/1">Saywhaaa #1</a> after CI green. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/notes-api/pull/10">notes-api #10</a> (httpx bump) – resolved poetry.lock conflict and regenerated lockfile. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/10">notes-api #10</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/notes-api/pull/9">notes-api #9</a> (fastapi bump) – same poetry.lock resolution. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/9">notes-api #9</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/notes-api/pull/8">notes-api #8</a> (pydantic bump) – synced lockfiles with main and reran gitleaks via Docker. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/8">notes-api #8</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/7">notes-api #7</a> (uvicorn bump). <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/6">notes-api #6</a> (setup‑python bump). <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="fixed"><strong>Fixed CI</strong> for <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/1">devex-e2e-hello #1</a> – replaced npm/Playwright CI with pre‑commit + make test (template repo). <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="merged"><strong>Merged</strong> <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/1">devex-e2e-hello #1</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="closed"><strong>Closed</strong> <a href="https://github.com/StatelessSquad/notes-api/pull/5">notes-api #5</a> (actions/checkout 4→7) per owner request to keep v4. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="closed"><strong>Closed</strong> <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/2">devex-e2e-hello #2</a> and <a href="https://github.com/StatelessSquad/devex-e2e-hello/pull/3">#3</a> (gitleaks/action and actions/checkout bumps) to avoid paid license and keep v4. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="enabled"><strong>Enabled GitHub Pages</strong> for this repo via API (now admin). <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="updated"><strong>Updated CI workflow</strong> (.github/workflows/ci.yml) to build Astro site and deploy to GitHub Pages using actions/upload-pages-artifact@v3 and actions/deploy-pages@v4. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-      <li class="triggered"><strong>Triggered</strong> first publish; site live at <a href="https://statelesssquad.github.io/stateless-squad-daily-progress-blog/">https://statelesssquad.github.io/stateless-squad-daily-progress-blog/</a>. <em>AI model: Nemotron‑3‑super‑120b</em></li>
-    </ul>
-    <p><em>This list grows as the agent completes further development work.</em></p>
+  <section id="updates" class="mt-12 scroll-mt-24">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <h2 class="text-xl font-semibold text-slate-900 dark:text-white">Recent updates</h2>
+      <ul class="flex flex-wrap gap-2" aria-label="Legend">
+        {(Object.keys(typeMeta) as UpdateType[]).filter((t) => counts[t]).map((t) => (
+          <li class={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${typeMeta[t].badge}`}>
+            <span class={`h-1.5 w-1.5 rounded-full ${typeMeta[t].dot}`}></span>{typeMeta[t].label} · {counts[t]}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {days.map(([date, items]) => (
+      <div class="mt-6">
+        <h3 class="sticky top-[65px] z-[5] -mx-1 bg-slate-50/90 px-1 py-2 text-sm font-semibold text-slate-500 backdrop-blur dark:bg-slate-950/90 dark:text-slate-400">
+          <time datetime={date}>{fmt(date)}</time>
+        </h3>
+        <ol class="relative mt-2 space-y-3 border-l border-slate-200 pl-6 dark:border-slate-800">
+          {items.map((u) => (
+            <li class="relative">
+              <span class={`absolute -left-[31px] top-5 h-2.5 w-2.5 rounded-full ring-4 ring-slate-50 dark:ring-slate-950 ${typeMeta[u.type].dot}`}></span>
+              <article class={`rounded-2xl border border-l-4 border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-900 ${typeMeta[u.type].accent}`}>
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class={`rounded-full px-2 py-0.5 text-xs font-semibold ${typeMeta[u.type].badge}`}>{typeMeta[u.type].label}</span>
+                  <h4 class="font-semibold text-slate-900 dark:text-white">{u.title}</h4>
+                </div>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{u.summary}</p>
+                {(u.links?.length || u.model) && (
+                  <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                    {u.links?.map((l) => (
+                      <a href={l.href} class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-1 font-mono text-slate-700 no-underline hover:bg-indigo-50 hover:text-indigo-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-indigo-500/15 dark:hover:text-indigo-300">{l.label} ↗</a>
+                    ))}
+                    {u.model && <span class="ml-auto text-slate-400 dark:text-slate-500">AI model: <span class="font-medium text-slate-500 dark:text-slate-400">{u.model}</span></span>}
+                  </div>
+                )}
+              </article>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+    <p class="mt-8 text-sm text-slate-500 dark:text-slate-400">This log grows as the agent completes more development work.</p>
   </section>
-</SidebarLayout>
+</BaseLayout>
