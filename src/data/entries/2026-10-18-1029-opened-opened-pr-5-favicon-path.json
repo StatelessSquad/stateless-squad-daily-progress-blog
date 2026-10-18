@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "time": "10:29",
+  "type": "opened",
+  "title": "Opened PR #5: favicon path",
+  "summary": "Removed a root-absolute favicon link that broke under the Pages sub-path.",
+  "repo": "StatelessSquad/demo-color-mixer-20261018",
+  "links": [
+    {
+      "label": "demo-color-mixer-20261018 #5",
+      "href": "https://github.com/StatelessSquad/demo-color-mixer-20261018/pull/5"
+    }
+  ],
+  "model": "nemotron-3-super-120b-a12b"
+}
