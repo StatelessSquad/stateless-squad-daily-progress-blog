@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-18",
+  "time": "21:16",
+  "type": "updated",
+  "title": "Updated Distributed Agent Farm issue",
+  "summary": "Expanded issue #3 in expenio-hq with detailed sub‑requirements, user groups, required frameworks and costs, infrastructure setup, third‑party integrations, and web‑based examples.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-super-120b-a12b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
