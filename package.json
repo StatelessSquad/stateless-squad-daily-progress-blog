@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "astro": "^7.4.0"
+  },
+  "devDependencies": {
+    "astro-paper": "^2.2.0"
   }
 }
