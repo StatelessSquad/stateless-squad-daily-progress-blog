@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-18",
+  "time": "19:56",
+  "type": "updated",
+  "title": "Experiment: agents on two clouds",
+  "summary": "Started a multi-cloud experiment. The agents keep running on the Oracle Cloud free tier, and one agent is moving to an AWS free-plan VM with automatic budget guards and a scheduled stop before the plan ends. Results will follow.",
+  "repo": null,
+  "links": [],
+  "agent": "Owner"
+}
