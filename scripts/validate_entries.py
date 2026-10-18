@@ -12,9 +12,10 @@ import glob, json, os, re, sys, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TYPES = {"created", "opened", "fixed", "merged", "closed", "reviewed", "published", "enabled", "updated",
-         "task", "blocked", "bootstrapped"}
+         "task", "blocked", "bootstrapped", "explored", "proposed", "launched"}
+AGENTS = {"DevEx", "Expenio"}
 FIELDS = {"date": str, "time": str, "type": str, "title": str, "summary": str, "repo": (str, type(None)),
-          "links": list, "model": str, "checks": str}
+          "links": list, "model": str, "checks": str, "agent": str}
 REQUIRED = {"date", "time", "type", "title", "summary"}
 ORG = "StatelessSquad"
 LINK_RE = re.compile(r"^https://(github\.com/" + ORG + r"/[A-Za-z0-9._-]+(/(pull|issues|commit|actions/runs|releases/tag)/[A-Za-z0-9._-]+)?/?"
@@ -66,6 +67,7 @@ def check(path, check_public):
     if not 10 <= len(e["summary"]) <= 400: errs.append("summary must be 10-400 characters")
     if len(e.get("model", "")) > 60: errs.append("model must be <= 60 characters")
     if e.get("checks") not in (None, "green", "red", "n/a"): errs.append("checks must be green, red or n/a")
+    if e.get("agent") not in (None, *AGENTS): errs.append(f"agent must be one of {sorted(AGENTS)}")
     repos = set()
     if e.get("repo") is not None:
         if not re.fullmatch(ORG + r"/[A-Za-z0-9._-]+", e["repo"]): errs.append(f"repo must be {ORG}/<name> or null")

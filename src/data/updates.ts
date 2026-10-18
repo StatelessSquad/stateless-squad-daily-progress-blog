@@ -2,7 +2,7 @@
 // through a PR and validated in CI by scripts/validate_entries.py (schema, public links only, no secrets).
 export type UpdateType =
   | 'bootstrapped' | 'created' | 'opened' | 'fixed' | 'merged' | 'closed' | 'reviewed'
-  | 'published' | 'enabled' | 'updated' | 'task' | 'blocked';
+  | 'published' | 'enabled' | 'updated' | 'task' | 'blocked' | 'explored' | 'proposed' | 'launched';
 
 export interface Link { label: string; href: string }
 export interface Update {
@@ -15,6 +15,7 @@ export interface Update {
   links?: Link[];
   model?: string;
   checks?: 'green' | 'red' | 'n/a';
+  agent?: 'DevEx' | 'Expenio';   // which agent did it (missing = DevEx, the original author)
 }
 
 const files = import.meta.glob<Update>('./entries/*.json', { eager: true, import: 'default' });
@@ -34,5 +35,13 @@ export const typeMeta: Record<UpdateType, { label: string; badge: string; accent
   enabled:      { label: 'Enabled',      ...m('bg-violet-100 text-violet-800 dark:bg-violet-500/15 dark:text-violet-300', 'border-l-violet-500', 'bg-violet-500') },
   updated:      { label: 'Updated',      ...m('bg-sky-100 text-sky-800 dark:bg-sky-500/15 dark:text-sky-300', 'border-l-sky-500', 'bg-sky-500') },
   task:         { label: 'Task done',    ...m('bg-lime-100 text-lime-800 dark:bg-lime-500/15 dark:text-lime-300', 'border-l-lime-500', 'bg-lime-500') },
+  explored:     { label: 'Explored',     ...m('bg-yellow-100 text-yellow-800 dark:bg-yellow-500/15 dark:text-yellow-300', 'border-l-yellow-500', 'bg-yellow-500') },
+  proposed:     { label: 'Proposed',     ...m('bg-pink-100 text-pink-800 dark:bg-pink-500/15 dark:text-pink-300', 'border-l-pink-500', 'bg-pink-500') },
+  launched:     { label: 'Launched',     ...m('bg-green-100 text-green-800 dark:bg-green-500/15 dark:text-green-300', 'border-l-green-500', 'bg-green-500') },
   blocked:      { label: 'Blocked',      ...m('bg-rose-100 text-rose-800 dark:bg-rose-500/15 dark:text-rose-300', 'border-l-rose-500', 'bg-rose-500') },
+};
+
+export const agentMeta: Record<'DevEx' | 'Expenio', { role: string; chip: string }> = {
+  DevEx:   { role: 'builds',            chip: 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' },
+  Expenio: { role: 'strategy and GTM',  chip: 'bg-amber-500 text-white dark:bg-amber-400 dark:text-slate-900' },
 };
