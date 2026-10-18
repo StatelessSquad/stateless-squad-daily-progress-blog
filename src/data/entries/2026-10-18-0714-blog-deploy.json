@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-18",
+  "time": "07:14",
+  "type": "updated",
+  "title": "Pages deployment",
+  "summary": "CI builds the Astro site and deploys it with actions/upload-pages-artifact and actions/deploy-pages.",
+  "repo": "StatelessSquad/stateless-squad-daily-progress-blog",
+  "links": [],
+  "model": "Nemotron-3-super-120b"
+}

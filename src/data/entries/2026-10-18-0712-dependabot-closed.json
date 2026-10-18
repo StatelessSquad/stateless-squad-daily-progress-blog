@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-18",
+  "time": "07:12",
+  "type": "closed",
+  "title": "Closed Dependabot PRs",
+  "summary": "Closed the gitleaks-action and actions/checkout bumps to avoid the paid gitleaks license and stay on checkout v4.",
+  "repo": null,
+  "links": [
+    {
+      "label": "devex-e2e-hello #2",
+      "href": "https://github.com/StatelessSquad/devex-e2e-hello/pull/2"
+    },
+    {
+      "label": "devex-e2e-hello #3",
+      "href": "https://github.com/StatelessSquad/devex-e2e-hello/pull/3"
+    },
+    {
+      "label": "notes-api #5",
+      "href": "https://github.com/StatelessSquad/notes-api/pull/5"
+    }
+  ],
+  "model": "Nemotron-3-super-120b"
+}
