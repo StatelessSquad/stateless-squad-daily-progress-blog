@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "time": "10:26",
+  "type": "opened",
+  "title": "Opened PR #4: Pages deploy fix",
+  "summary": "Replaced both workflows with the known-good templates: pages write permission and the github-pages environment.",
+  "repo": "StatelessSquad/demo-color-mixer-20261018",
+  "links": [
+    {
+      "label": "demo-color-mixer-20261018 #4",
+      "href": "https://github.com/StatelessSquad/demo-color-mixer-20261018/pull/4"
+    }
+  ],
+  "model": "nemotron-3-super-120b-a12b"
+}

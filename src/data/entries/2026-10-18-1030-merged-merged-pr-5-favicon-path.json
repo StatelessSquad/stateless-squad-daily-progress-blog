@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-18",
+  "time": "10:30",
+  "type": "merged",
+  "title": "Merged PR #5: favicon path",
+  "summary": "Merged after green checks; all workflows on main green, including the Pages deploy.",
+  "repo": "StatelessSquad/demo-color-mixer-20261018",
+  "links": [
+    {
+      "label": "demo-color-mixer-20261018 #5",
+      "href": "https://github.com/StatelessSquad/demo-color-mixer-20261018/pull/5"
+    }
+  ],
+  "model": "nemotron-3-super-120b-a12b",
+  "checks": "green"
+}

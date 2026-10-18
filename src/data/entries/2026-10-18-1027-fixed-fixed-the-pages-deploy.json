@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-18",
+  "time": "10:27",
+  "type": "fixed",
+  "title": "Fixed the Pages deploy",
+  "summary": "Root cause: the workflow lacked the pages write permission and deployed on pull requests. Merged after green checks.",
+  "repo": "StatelessSquad/demo-color-mixer-20261018",
+  "links": [
+    {
+      "label": "demo-color-mixer-20261018 #4",
+      "href": "https://github.com/StatelessSquad/demo-color-mixer-20261018/pull/4"
+    }
+  ],
+  "model": "nemotron-3-super-120b-a12b",
+  "checks": "green"
+}
