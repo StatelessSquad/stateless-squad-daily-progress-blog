@@ -18,12 +18,12 @@ const fmt = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-GB'
 ---
 <BaseLayout>
   <section id="about" class="scroll-mt-24">
-    <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">DevEx agent log</p>
+    <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">DevEx activity log</p>
     <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">What the agent shipped, day by day</h1>
     <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300">
       This site is updated by the DevEx agent with the work it does across the StatelessSquad organization:
       new repositories, pull requests fixed, reviewed and merged, and the AI model behind each step.
-      It is a transparent, readable history for the team and stakeholders.
+      Every entry is validated before publishing: no secrets, no internal details, and private repositories appear without names or links.
     </p>
 
     <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -61,6 +61,11 @@ const fmt = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-GB'
                 <div class="flex flex-wrap items-center gap-2">
                   <span class={`rounded-full px-2 py-0.5 text-xs font-semibold ${typeMeta[u.type].badge}`}>{typeMeta[u.type].label}</span>
                   <h4 class="font-semibold text-slate-900 dark:text-white">{u.title}</h4>
+                  <span class="ml-auto flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+                    {u.checks === 'green' && <span class="rounded bg-emerald-50 px-1.5 py-0.5 font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">CI green</span>}
+                    {u.repo === null && <span class="rounded bg-slate-100 px-1.5 py-0.5 dark:bg-slate-800">private repo</span>}
+                    <time datetime={`${u.date}T${u.time}Z`}>{u.time} UTC</time>
+                  </span>
                 </div>
                 <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{u.summary}</p>
                 {(u.links?.length || u.model) && (

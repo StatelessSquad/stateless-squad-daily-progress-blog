@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "time": "07:01",
+  "type": "fixed",
+  "title": "Fixed CI",
+  "summary": "Added the Playwright browser install step.",
+  "repo": "StatelessSquad/Saywhaaa",
+  "links": [
+    {
+      "label": "Saywhaaa #1",
+      "href": "https://github.com/StatelessSquad/Saywhaaa/pull/1"
+    }
+  ],
+  "model": "Nemotron-3-super-120b"
+}

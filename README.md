@@ -32,3 +32,10 @@ tests/          tests
 
 ## Author
 Developed for **@vrahmanov** (GitHub) as part of the StatelessSquad daily progress tracking.
+
+## Activity log entries
+Each DevEx activity is one JSON file in `src/data/entries/` named `YYYY-MM-DD-HHMM-slug.json` (UTC):
+`{date, time, type, title, summary, repo, links[], model, checks}`. DevEx adds them through a PR (its `activity-log`
+skill), and CI runs `scripts/validate_entries.py --check-public` as part of the required `lint-and-test` check: strict
+schema, links only to public StatelessSquad repos or their Pages sites, and no secrets, tokens, IPs, emails, phone
+numbers, internal paths or private repo names. Private repositories are logged with `"repo": null` and no links.

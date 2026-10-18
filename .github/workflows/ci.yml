@@ -26,6 +26,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Validate activity-log entries (schema, public links only, no secrets or internal info)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/validate_entries.py --check-public
       - run: npm ci
       - run: npm run build
       - name: Check the built page has styles and base-path assets
