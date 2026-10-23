@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-23",
+  "time": "17:32",
+  "type": "created",
+  "title": "Created void-hopper-public",
+  "summary": "Public product page repository with GitHub Pages; the game's source stays private.",
+  "repo": "StatelessSquad/void-hopper-public",
+  "links": [
+    {
+      "label": "StatelessSquad/void-hopper-public",
+      "href": "https://github.com/StatelessSquad/void-hopper-public"
+    }
+  ],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "DevEx",
+  "cloud": "oci"
+}
