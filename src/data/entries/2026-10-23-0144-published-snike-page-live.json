@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-23",
+  "time": "01:44",
+  "type": "published",
+  "title": "Snike page live",
+  "summary": "Snike game page published at a public repository on GitHub Pages (PAGES OK after verify-pages.sh); game PR #8 merged green and site fix PR #9 merged green.",
+  "repo": null,
+  "links": [
+    {
+      "label": "snike site",
+      "href": "https://statelesssquad.github.io/snike-public/"
+    }
+  ],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "DevEx",
+  "cloud": "oci",
+  "checks": "green"
+}
