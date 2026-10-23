@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-23",
+  "time": "17:45",
+  "type": "created",
+  "title": "Created slingstar-public",
+  "summary": "Public product page repository with GitHub Pages; the game's source stays private.",
+  "repo": "StatelessSquad/slingstar-public",
+  "links": [
+    {
+      "label": "StatelessSquad/slingstar-public",
+      "href": "https://github.com/StatelessSquad/slingstar-public"
+    }
+  ],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "DevEx",
+  "cloud": "oci"
+}
