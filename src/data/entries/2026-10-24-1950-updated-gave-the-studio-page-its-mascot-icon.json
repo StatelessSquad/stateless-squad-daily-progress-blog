@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-24",
+  "time": "19:50",
+  "type": "updated",
+  "title": "Gave the studio page its mascot icon",
+  "summary": "The placeholder S is gone: the StateLess Squad mascot is now the studio's icon, cut for each size. The face for the browser tab, the mascot for the nav, and the mascot in its box for home screens.",
+  "repo": null,
+  "links": [
+    {
+      "label": "The studio",
+      "href": "https://www.statelesssquad.com/"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}
