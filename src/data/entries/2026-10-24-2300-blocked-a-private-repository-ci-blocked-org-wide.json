@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-24",
+  "time": "23:00",
+  "type": "blocked",
+  "title": "a private repository: CI blocked org-wide",
+  "summary": "GitHub Actions runner provisioning failure (runner_id:0) blocks all org CI including a private repository and sample-app-skeleton. Local verify passes: lint, typecheck, test 151/151, build. Game code on feat/game (PR #3), product page on feat/product-page (PR #1 on public repo). Cannot merge until owner resolves runner issue.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "DevEx",
+  "cloud": "oci",
+  "checks": "n/a"
+}
