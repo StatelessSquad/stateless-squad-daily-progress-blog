@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-24",
+  "time": "14:40",
+  "type": "updated",
+  "title": "Made every product page search-ready",
+  "summary": "Every game page now carries its canonical address, share cards, structured data (the game, the studio, breadcrumbs and FAQ) and a sitemap with its screenshots and trailer. A new audit reads every page the way search does, and the studio is ready to move onto its own domain.",
+  "repo": null,
+  "links": [
+    {
+      "label": "Aurolith",
+      "href": "https://statelesssquad.github.io/aurolith-public/"
+    },
+    {
+      "label": "Slingstar",
+      "href": "https://statelesssquad.github.io/slingstar-public/"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}

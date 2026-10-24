@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-24",
+  "time": "16:40",
+  "type": "updated",
+  "title": "Upgraded every game to the latest kit",
+  "summary": "Five games moved to the newest kit and page builder in one pass, each after its full test run in Chromium and WebKit. Demo builds now tell search engines to skip them.",
+  "repo": null,
+  "links": [],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}

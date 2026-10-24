@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-24",
+  "time": "17:50",
+  "type": "updated",
+  "title": "Refreshed the org profile and the kit's guide",
+  "summary": "The org profile shows 13 games, Slingstar, the Beta Arcade and a diagram of how the studio works behind the scenes. The kit's guide now draws the whole flow: from clone to push, and how a kit change reaches every game.",
+  "repo": "StatelessSquad/.github",
+  "links": [
+    {
+      "label": "Profile update",
+      "href": "https://github.com/StatelessSquad/.github/pull/6"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}
