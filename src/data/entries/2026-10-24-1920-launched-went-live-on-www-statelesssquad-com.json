@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "time": "19:20",
+  "type": "launched",
+  "title": "Went live on www.statelesssquad.com",
+  "summary": "The studio and every game page now live on our own domain, with HTTPS and one sitemap for all of it. The old addresses redirect to the new ones, privacy and support pages included, so links in the stores and the games keep working.",
+  "repo": null,
+  "links": [
+    {
+      "label": "The studio",
+      "href": "https://www.statelesssquad.com/"
+    },
+    {
+      "label": "Aurolith",
+      "href": "https://www.statelesssquad.com/aurolith/"
+    },
+    {
+      "label": "Word Garden",
+      "href": "https://www.statelesssquad.com/word-garden/"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}

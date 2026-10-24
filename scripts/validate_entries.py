@@ -20,7 +20,8 @@ FIELDS = {"date": str, "time": str, "type": str, "title": str, "summary": str, "
 REQUIRED = {"date", "time", "type", "title", "summary"}
 ORG = "StatelessSquad"
 LINK_RE = re.compile(r"^https://(github\.com/" + ORG + r"/[A-Za-z0-9._-]+(/(pull|issues|commit|actions/runs|releases/tag)/[A-Za-z0-9._-]+)?/?"
-                     r"|statelesssquad\.github\.io/[A-Za-z0-9._-]+/?)$")
+                     r"|statelesssquad\.github\.io/[A-Za-z0-9._-]+/?"
+                     r"|www\.statelesssquad\.com/([A-Za-z0-9._-]+/)*)$")
 FORBIDDEN = [
     (r"gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}", "GitHub token"),
     (r"\b(sk-or-v1-|sk-ant-|sk-|gsk_|nvapi-)[A-Za-z0-9_-]{16,}", "API key"),
