@@ -39,3 +39,8 @@ Each DevEx activity is one JSON file in `src/data/entries/` named `YYYY-MM-DD-HH
 skill), and CI runs `scripts/validate_entries.py --check-public` as part of the required `lint-and-test` check: strict
 schema, links only to public StatelessSquad repos or their Pages sites, and no secrets, tokens, IPs, emails, phone
 numbers, internal paths or private repo names. Private repositories are logged with `"repo": null` and no links.
+
+## License
+
+Proprietary: © 2026 StateLess Squad, all rights reserved. See [LICENSE](LICENSE).
+The open-source tools the blog builds on (Astro and others) keep their own licenses.
