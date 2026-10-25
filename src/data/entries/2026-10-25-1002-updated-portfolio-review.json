@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-25",
+  "time": "10:02",
+  "type": "updated",
+  "title": "Portfolio review",
+  "summary": "8 ideas (1 internal), 0 approved, 0 building, 0 launched.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
