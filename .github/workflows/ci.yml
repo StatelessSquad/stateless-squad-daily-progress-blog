@@ -35,7 +35,7 @@ jobs:
       - name: Check the built page has styles and base-path assets
         run: |
           test -n "$(ls dist/_astro/*.css 2>/dev/null)" || { echo "no CSS emitted"; exit 1; }
-          grep -q '/stateless-squad-daily-progress-blog/favicon.svg' dist/index.html
+          grep -q 'href="/favicon.svg"' dist/index.html
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:

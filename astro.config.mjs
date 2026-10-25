@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://statelesssquad.github.io',
-  base: '/stateless-squad-daily-progress-blog/',
+  site: 'https://orgflow.statelesssquad.com',
+  base: '/',
   vite: { plugins: [tailwindcss()] },
 });
