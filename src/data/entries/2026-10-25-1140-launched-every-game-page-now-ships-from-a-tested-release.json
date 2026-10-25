@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-25",
+  "time": "11:40",
+  "type": "launched",
+  "title": "Every game page now ships from a tested release",
+  "summary": "All six game pages on www.statelesssquad.com are now built from a versioned release of their game, and only once that release's tests have passed. Nothing looks different on the pages. Adding the next game, or updating one of these six, is now a small, checked step.",
+  "repo": null,
+  "links": [
+    {
+      "label": "The studio",
+      "href": "https://www.statelesssquad.com/"
+    },
+    {
+      "label": "Slingstar",
+      "href": "https://www.statelesssquad.com/slingstar/"
+    },
+    {
+      "label": "StateLess-Cube",
+      "href": "https://www.statelesssquad.com/stateless-cube/"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}
