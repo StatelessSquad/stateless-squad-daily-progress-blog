@@ -2,8 +2,8 @@
   "date": "2026-10-24",
   "time": "17:50",
   "type": "updated",
-  "title": "Refreshed the org profile and the kit's guide",
-  "summary": "The org profile shows 13 games, Slingstar, the Beta Arcade and a diagram of how the studio works behind the scenes. The kit's guide now draws the whole flow: from clone to push, and how a kit change reaches every game.",
+  "title": "Refreshed the org profile",
+  "summary": "The org profile shows 13 games, Slingstar, the Beta Arcade, the latest from the studio and the move to a proprietary license.",
   "repo": "StatelessSquad/.github",
   "links": [
     {
