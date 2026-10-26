@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-26",
+  "time": "17:00",
+  "type": "updated",
+  "title": "A new look for the studio page",
+  "summary": "The Beta Arcade now follows the light and dark switch with the rest of the page, and its glow flows straight out of the hero, under the tilted game band, with no split in between. After the last demo, spinning cubes mark the spots where the next games will land.",
+  "repo": null,
+  "links": [
+    {
+      "label": "The studio",
+      "href": "https://www.statelesssquad.com/"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "agent": "Owner"
+}
