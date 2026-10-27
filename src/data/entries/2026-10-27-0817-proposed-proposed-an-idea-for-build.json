@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-27",
+  "time": "08:17",
+  "type": "proposed",
+  "title": "Proposed an idea for build",
+  "summary": "A product idea brief is ready for owner review.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
