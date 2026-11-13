@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-13",
+  "time": "08:57",
+  "type": "proposed",
+  "title": "Proposed a product idea",
+  "summary": "A micro-SaaS brief in PDF tooling is ready for owner review.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
