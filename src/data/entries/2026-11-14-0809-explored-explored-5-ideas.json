@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-14",
+  "time": "08:09",
+  "type": "explored",
+  "title": "Explored 5 ideas",
+  "summary": "Daily idea exploration published; top score 14/20.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
