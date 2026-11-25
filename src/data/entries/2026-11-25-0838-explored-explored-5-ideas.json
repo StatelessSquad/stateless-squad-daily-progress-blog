@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-25",
+  "time": "08:38",
+  "type": "explored",
+  "title": "Explored 5 ideas",
+  "summary": "AI agent tooling and developer productivity; top score 18/20; one brief proposed.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
