@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-26",
+  "time": "08:09",
+  "type": "explored",
+  "title": "Explored 5 ideas",
+  "summary": "AI agent infrastructure: managed crawling, browser automation, model routing, observability, MCP marketplace; top score 14/20; no brief proposed.",
+  "repo": null,
+  "links": [],
+  "model": "nemotron-3-ultra-550b-a55b",
+  "agent": "Expenio",
+  "cloud": "oci"
+}
